@@ -1,0 +1,5 @@
+﻿Jacob 13 45
+Becky 14.50 25
+Terry 8.50 39
+Grant 13.50 50
+Billy 17 30
