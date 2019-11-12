@@ -45,23 +45,50 @@ MyStack<T>::MyStack(const MyStack& obj){
     cursor = cursor -> next;
   }
   cursor = obj.top;
+  Node* temp = obj.top;
   top = nullptr;
+  for (cursor = obj.top; cursor; cursor = cursor -> next){
+    for (int h = 0; h < counter - 1; h++){
+      temp = temp -> next;
+    }
+    push(temp -> data);
+    temp = obj.top;
+    counter--;
+  }
 }
 
 template <class T>
 MyStack<T>& MyStack<T>::operator=(const MyStack<T>& obj){
-  Node* cursor = this -> top;
-  while(cursor){
-    Node* temp = cursor -> next;
-    delete cursor;
-    cursor = temp;
+  int counter = 0;
+  Node* cursor = obj.top;
+  if (this == &obj){
+    std::cout << "The Same Stack!" << std::endl;
   }
-  cursor = obj.top;
-  while(cursor){
-    push(cursor -> data);
-    cursor = cursor -> next;
+  else{
+    Node* cursor = this->top; 
+    while(cursor){
+      Node* nextNode = cursor-> next;
+      delete cursor;
+      cursor = nextNode;
+    }
+    cursor = obj.top;
+    while (cursor){
+      counter++;
+      cursor = cursor -> next;
+    }
+    cursor = obj.top;
+    Node* temp = obj.top;
+    this->top = nullptr;
+    for (cursor = obj.top; cursor; cursor = cursor->next){
+      for (int h = 0; h < counter - 1; h++){
+        temp = temp->next;
+      }
+      this->push(temp->data);
+      temp = obj.top;
+      counter--;
+    }
+    return *this;
   }
-  return *this;
 }
 
 template <class T>
