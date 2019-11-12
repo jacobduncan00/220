@@ -81,7 +81,7 @@ void MyStack<T>::push(T obj){
 
 template <class T>
 void MyStack<T>::pop(T& obj){
-  if (top == nullptr){
+  if (!top){
     std::cout << "Stack Empty" << std::endl;
     return;
   }
@@ -106,6 +106,11 @@ T MyStack<T>::peek(){
 template <class T>
 void MyStack<T>::print(){
   std::cout << "=============" << std::endl;
+   if (!top){
+    std::cout << "Stack Empty" << std::endl;
+    std::cout << "=============" << std::endl;
+    return;
+  }
   for (Node* cursor = top; cursor; cursor = cursor -> next){
     std::cout << cursor -> data;
     std::cout << std::endl;
