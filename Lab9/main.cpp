@@ -1,4 +1,4 @@
-#include "template.h"
+#include "mystack.h"
 #include "payroll.h"
 
 // By Jacob Duncan @ Salisbury University
