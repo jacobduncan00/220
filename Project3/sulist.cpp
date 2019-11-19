@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include "sulist.h"
 
 template <class DataType>
@@ -9,17 +10,31 @@ SUList<DataType>::SUList(){
 
 template <class DataType>
 SUList<DataType>::SUList(const SUList& obj){
+  std::cout << " Copy Constructor Called...";
   if (obj.head == nullptr){
     head = nullptr;
   }
-  else {
-    ListNode *currentPtr = obj.head;
-    while (currentPtr){
-      putBack(currentPtr -> data);
-      currentPtr = currentPtr -> next;
-    }
+  ListNode *headhold = new ListNode;
+  ListNode *curr = headhold;
+  ListNode *curr2 = obj.head;
+  for (; curr2 != nullptr; curr2 = curr2 -> next){
+    curr -> next = new ListNode;
+    curr = curr -> next;
+    curr -> data = curr2 -> data;
+    curr -> next = nullptr;
   }
+  head = headhold -> next;
+  delete headhold;
+  std::cout << "Copied Successfully..." << std::endl;
 }
+
+template <class DataType>
+SUList<DataType>& SUList<DataType>::operator=(const SUList<DataType>& obj){
+  SUList<DataType>temp(obj);
+  std::swap(temp.head, head);
+  return *this;
+}
+
 
 template <class DataType>
 SUList<DataType>::~SUList(){
@@ -37,22 +52,24 @@ SUList<DataType>::~SUList(){
 
 template <class DataType>
 DataType SUList<DataType>::getFront(){
-  ListNode *tempPtr = head;
+  ListNode *tempPtr = new ListNode;
+  tempPtr->data = head->data;
   delete head;
-  head = tempPtr -> next;
-  return tempPtr -> data;
+  head = tempPtr->next;
+  return tempPtr->data;
 }
 
 template <class DataType>
 DataType SUList<DataType>::getBack(){
-  ListNode *currentPtr = head;
-  ListNode *tempPtr = tail;
-  delete tail;
-  tail = nullptr;
-  return tempPtr -> data;
-  while (currentPtr){ // TESTS TRAVERSAL AFTER DELETION
-    currentPtr = currentPtr -> next;
+  ListNode *tempPtr = new ListNode;
+  ListNode *traverse = head;
+  while (traverse -> next != nullptr){
+    traverse = traverse -> next;
   }
+  tempPtr->data = tail->data;
+  delete tail;
+  tail = traverse;
+  return tempPtr->data;
 }
 
 template <class DataType>
@@ -71,9 +88,8 @@ void SUList<DataType>::putBack(const DataType& obj){
   while (traverse -> next){
     traverse = traverse -> next;
   }
-  tail = traverse;
-  tail -> next = tempPtr; // problem
-  tempPtr = tail;
+  traverse -> next = tempPtr; // problem
+  tail = tempPtr;
 }
 
 template <class DataType>
@@ -85,6 +101,20 @@ int SUList<DataType>::size() const{
     currentPtr = currentPtr -> next;
   }
   return counter;
+}
+
+template <class DataType>
+bool SUList<DataType>::contains(const DataType& obj){
+  ListNode *tempPtr = head;
+  while (tempPtr){
+    if(tempPtr->data == obj){
+      std::cout << "Membership Confirmed!" << std::endl;
+      return true;
+    }
+    tempPtr = tempPtr->next;
+  }
+  std::cout << "Membership Denied!" << std::endl;
+  return false;
 }
 
 template <class DataType>
