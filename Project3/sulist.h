@@ -10,6 +10,7 @@ private:
   };
   ListNode* head;      // The front of the list
   ListNode* tail;      // The last node of the list
+  
 public:
   SUList();                      // Default ctor
   SUList(const SUList&);         // Copy ctor

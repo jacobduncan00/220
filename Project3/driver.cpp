@@ -1,5 +1,7 @@
 #include <iostream>
 #include "sulist.h"
+#include "sustacklist.h"
+#include "suqueuearr.h"
 
 int main(){
   SUList<int> test;
@@ -35,5 +37,20 @@ int main(){
   std::cout << "| TESTING CONTAINS FUNCTION   | Testing if 5 is a member of the list: ";
   bool flag = test.contains(5);
   std::cout << std::endl;
+
+
+
+
+
+  SUStackList<int> boop;
+  boop.push(5);
+  boop.printStack();
+
+  /*
+
+  SUQueueArr<int> beep;
+  beep.printQueue();
+
+  */
   return 0;
 }

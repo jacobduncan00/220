@@ -1,6 +1,5 @@
 #ifndef SUSTACKLIST_H
 #define SUSTACKLIST_H
-#include "sustacklist.cpp"
 
 template <class DataType>
 class SUStackList{
@@ -17,5 +16,7 @@ public:
   void printStack() const;        // Prints the stack from the top, down
   SUStackList<DataType>& operator=(const SUStackList<DataType>&); // Assignment operator
 };
+
+#include "sustacklist.cpp"
 
 #endif

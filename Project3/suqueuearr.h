@@ -1,6 +1,5 @@
 #ifndef SUQUEUEARR_H
 #define SUQUEUEARR_H
-#include "suqueuearr.cpp"
 
 template <class DataType>
 class SUQueueArr{
@@ -20,5 +19,7 @@ public:
   void printQueue() const;        // Prints the queue from the front to the rear
   SUQueueArr<DataType>& operator=(const SUQueueArr<DataType>&); // Assignment operator
 };
+
+#include "suqueuearr.cpp"
 
 #endif
