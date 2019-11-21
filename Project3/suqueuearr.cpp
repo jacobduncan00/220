@@ -10,12 +10,12 @@ SUQueueArr<DataType>::SUQueueArr(){ // Constructor
 }
 
 template <class DataType>
-SUQueueArr<DataType>::SUQueueArr(const SUQueueArr &obj){ // Copy Constructor
-	capacity = obj.capacity ;
-	front = obj.front;
-	rear = obj.rear;
+SUQueueArr<DataType>::SUQueueArr(const SUQueueArr &right){ // Copy Constructor
+	capacity = right.capacity ;
+	front = right.front;
+	rear = right.rear;
 	for(int i = 0; i < capacity; i++){
-		arr[i] = obj.arr[i];
+		arr[i] = right.arr[i];
 	}
 }
 
@@ -26,12 +26,19 @@ SUQueueArr<DataType>::~SUQueueArr(){
 
 template <class DataType>
 int SUQueueArr<DataType>::size() const{ // get the number of elements in the queue
-	return rear + 1;
+	return rear;
 }
 
 template <class DataType>
 bool SUQueueArr<DataType>::isEmpty() const{ // Check if the queue is empty
-	return size() == 0;
+	if (size() == 0){
+  	std::cout << "Stack is Empty..." << std::endl;
+  	return true;
+  }
+  else{
+  	std::cout << "Stack is NOT Empty..." << std::endl;
+  	return false;
+  }
 }
 
 template <class DataType>
@@ -65,7 +72,7 @@ void SUQueueArr<DataType>::printQueue() const{ // Prints the queue from the fron
 		return;
 	}else{
 		for(int i = 0; i < rear; i++){
-			std::cout << arr[i] << std::endl;
+			std::cout << arr[i] << " ";
 		}
 		return;
 	}

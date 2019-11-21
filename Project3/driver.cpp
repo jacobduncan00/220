@@ -81,6 +81,30 @@ int main(){
   std::cout << std::endl;
   std::cout << "ＳＵＱｕｅｕｅＡｒｒ　ＴＥＳＴ" << std::endl;
   std::cout << std::endl;
+  SUQueueArr<int> lol;
+  std::cout << "| TESTING ENQUEUE FUNCTION    | Adding 5 2 3 to Queue" << std::endl;
+  lol.enqueue(5);
+  lol.enqueue(2);
+  lol.enqueue(3);
+  std::cout << "| TESTING PRINT FUNCTION      | Printing Queue: ";
+  lol.printQueue();
+  std::cout << std::endl;
+  std::cout << "| TESTING DEQUEUE DUNCTION    | Using dequeue once, printing value held: ";
+  int deholder = 0;
+  lol.dequeue(deholder);
+  std::cout << deholder << std::endl;
+  std::cout << "| TESTING PRINT FUNCTION      | Printing Queue: ";
+  lol.printQueue();
+  std::cout << std::endl;
+  std::cout << "| TESTING ISEMPTY FUNCTION    | ";
+  bool qaempty = lol.isEmpty();
+  std::cout << "| TESTING SIZE FUNCTION       | Number of Elements in Queue: ";
+  int sizeOfQueue = lol.size();
+  std::cout << sizeOfQueue << std::endl;
+  std::cout << "| TESTING COPY CONSTRUCTOR    |";
+  //SUQueueArr<int> copyLol(lol);   COPY CONST BROKEN
+  std::cout << std::endl;
+  std::cout << std::endl;
   std::cout << "ＳＵＱｕｅｕｅＬｉｓｔ　ＴＥＳＴ" << std::endl;
   std::cout << std::endl;
   /*
