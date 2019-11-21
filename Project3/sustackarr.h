@@ -1,6 +1,5 @@
 #ifndef SUSTACKARR_H
 #define SUSTACKARR_H
-#include "sustackarr.cpp"
 
 template <class DataType>
 class SUStackArr{
@@ -18,6 +17,9 @@ public:
   void pop(DataType&);            // Pop an object off the stack and store it
   void printStack() const;        // Prints the stack from the top, down
   SUStackArr<DataType>& operator=(const SUStackArr<DataType>&); // Assignment operator
+  DataType* copyArr(DataType*,int,int);
 };
+
+#include "sustackarr.cpp"
 
 #endif

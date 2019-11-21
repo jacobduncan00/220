@@ -25,7 +25,7 @@ SUList<DataType>::SUList(const SUList& obj){
   }
   head = headhold -> next;
   delete headhold;
-  std::cout << "Copied Successfully..." << std::endl;
+  std::cout << "Copied Successfully!" << std::endl;
 }
 
 template <class DataType>
