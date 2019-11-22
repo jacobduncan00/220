@@ -27,10 +27,12 @@ int SUStackList<DataType>::size() const{
 
 template <class DataType>
 bool SUStackList<DataType>::isEmpty() const{
-  if (list.size() != 0){
+  if (size() != 0){
+    std::cout << "Stack is NOT Empty" << std::endl;
     return false;
   }
   else{
+    std::cout << "Stack is Empty" << std::endl;
     return true;
   }
 }
@@ -47,5 +49,11 @@ void SUStackList<DataType>::pop(DataType& obj){
 
 template <class DataType>
 void SUStackList<DataType>::printStack() const{
-  list.print();
+  if (size() == 0){
+    std::cout << "Stack is Empty!" << std::endl;
+    return;
+  }
+  else{
+    list.print();
+  }
 }

@@ -1,5 +1,6 @@
 #ifndef SUQUEUEARR_H
 #define SUQUEUEARR_H
+#include "sulist.h"
 
 template <class DataType>
 class SUQueueArr{

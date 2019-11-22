@@ -1,5 +1,6 @@
 #ifndef SUSTACKLIST_H
 #define SUSTACKLIST_H
+#include "sulist.h"
 
 template <class DataType>
 class SUStackList{

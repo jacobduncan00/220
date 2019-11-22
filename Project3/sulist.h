@@ -7,6 +7,7 @@ private:
   struct ListNode{     // The nodes of the list
     DataType data;      // The data stored in the node
     ListNode* next;     // The next node in the list
+    ListNode* prev;     // The previous node in the list
   };
   ListNode* head;      // The front of the list
   ListNode* tail;      // The last node of the list

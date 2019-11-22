@@ -7,5 +7,4 @@ driver.o: driver.cpp
 	g++ -std=c++11 -c driver.cpp
 
 clean:
-	rm *.gch
 	rm *.o

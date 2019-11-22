@@ -1,6 +1,6 @@
 #ifndef SUQUEUELIST_H
 #define SUQUEUELIST_H
-#include "suqueuelist.cpp"
+#include "sulist.h"
 
 template <class DataType>
 class SUQueueList{
@@ -17,5 +17,7 @@ public:
   void printQueue() const;        // Prints the queue from the front to the rear
   SUQueueList<DataType>& operator=(const SUQueueList<DataType>&); // Assignment operator
 };
+
+#include "suqueuelist.cpp"
 
 #endif

@@ -52,44 +52,67 @@ SUList<DataType>::~SUList(){
 
 template <class DataType>
 DataType SUList<DataType>::getFront(){
-  ListNode *tempPtr = new ListNode;
-  tempPtr->data = head->data;
-  delete head;
-  head = tempPtr->next;
-  return tempPtr->data;
+  ListNode *tempPtr = head;
+  DataType hold = head->data;
+  head = head->next;
+  delete tempPtr;
+  return hold;
 }
 
 template <class DataType>
 DataType SUList<DataType>::getBack(){
-  ListNode *tempPtr = new ListNode;
-  ListNode *traverse = head;
-  while (traverse -> next != nullptr){
-    traverse = traverse -> next;
+  ListNode* tempPtr = tail;
+  DataType hold = tail->data;
+  if(head && tail){
+    tail = tempPtr->prev;
+    tail->next = nullptr;
+    delete tempPtr;
+    return hold;
+  }if(!head->next){
+    tail = tempPtr->prev;
+    head = nullptr;
+    delete tempPtr;
+    return hold;
   }
-  tempPtr->data = tail->data;
-  delete tail;
-  tail = traverse;
-  return tempPtr->data;
 }
 
 template <class DataType>
 void SUList<DataType>::putFront(const DataType& obj){
-  ListNode *tempPtr = new ListNode;
-  tempPtr -> data = obj;
-  tempPtr -> next = head;
-  head = tempPtr;
+ ListNode* newNode = new ListNode;
+  newNode->data = obj;
+  newNode->next = nullptr;
+  newNode->prev = nullptr;
+  if(!head && !tail){
+    newNode->next = head;
+    head = newNode;
+    tail = newNode;
+  }else{
+    newNode->next = head;
+    head->prev = newNode;
+    head = newNode;
+  }
+  ListNode* cursor = head;
+  while(cursor->next){
+    cursor = cursor->next;
+  }
+  tail = cursor;
 }
 
 template <class DataType>
 void SUList<DataType>::putBack(const DataType& obj){
-  ListNode *tempPtr = new ListNode;
-  ListNode *traverse = head;
-  tempPtr -> data = obj;
-  while (traverse -> next){
-    traverse = traverse -> next;
+ListNode* newNode = new ListNode;
+  newNode->data = obj;
+  newNode->next = nullptr;
+  newNode->prev = nullptr;
+  if(!tail && !head){
+    newNode->prev = tail;
+    head = newNode;
+    tail = newNode;
+  }else{
+    newNode->prev = tail;
+    tail->next = newNode;
+    tail = newNode;
   }
-  traverse -> next = tempPtr; // problem
-  tail = tempPtr;
 }
 
 template <class DataType>
@@ -111,7 +134,9 @@ bool SUList<DataType>::contains(const DataType& obj){
       std::cout << "Membership Confirmed!" << std::endl;
       return true;
     }
-    tempPtr = tempPtr->next;
+    else{
+      tempPtr = tempPtr->next;
+    }
   }
   std::cout << "Membership Denied!" << std::endl;
   return false;

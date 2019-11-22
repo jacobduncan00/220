@@ -1,8 +1,9 @@
 #include <iostream>
 #include "sulist.h"
-//#include "sustacklist.h"
+#include "sustacklist.h"
 #include "suqueuearr.h"
 #include "sustackarr.h"
+#include "suqueuelist.h"
 
 int main(){
   SUList<int> test;
@@ -79,6 +80,24 @@ int main(){
 
   std::cout << "ＳＵＳｔａｃｋＬｉｓｔ　ＴＥＳＴ" << std::endl;
   std::cout << std::endl;
+  SUStackList<int> ok;
+  std::cout << "| TESTING PUSH FUNCTION       | Pushing 8 3 6" << std::endl;
+  ok.push(8);
+  ok.push(3);
+  ok.push(6);
+  std::cout << "| TESTING POP FUNCTION        | Popping Once" << std::endl;
+  int holder = 0;
+  ok.pop(holder);
+  std::cout << "| TESTING PRINT FUNCTION      | Printing Stack: ";
+  //ok.printStack();
+  std::cout << std::endl;
+  std::cout << "| TESTING SIZE FUNCTION       | Number of Elements in Stack: ";
+  int r = ok.size();
+  std::cout << r << std::endl;
+  std::cout << "| TESTING ISEMPTY FUNCTION    | ";
+  bool SUStackListEmpty = ok.isEmpty();
+  std::cout << std::endl;
+
   std::cout << "ＳＵＱｕｅｕｅＡｒｒ　ＴＥＳＴ" << std::endl;
   std::cout << std::endl;
   SUQueueArr<int> lol;
@@ -89,7 +108,7 @@ int main(){
   std::cout << "| TESTING PRINT FUNCTION      | Printing Queue: ";
   lol.printQueue();
   std::cout << std::endl;
-  std::cout << "| TESTING DEQUEUE DUNCTION    | Using dequeue once, printing value held: ";
+  std::cout << "| TESTING DEQUEUE FUNCTION    | Using dequeue once, printing value held: ";
   int deholder = 0;
   lol.dequeue(deholder);
   std::cout << deholder << std::endl;
@@ -104,9 +123,28 @@ int main(){
   std::cout << "| TESTING COPY CONSTRUCTOR    |";
   //SUQueueArr<int> copyLol(lol);   COPY CONST BROKEN
   std::cout << std::endl;
+
+
   std::cout << std::endl;
   std::cout << "ＳＵＱｕｅｕｅＬｉｓｔ　ＴＥＳＴ" << std::endl;
   std::cout << std::endl;
+  SUQueueList<int> intQueueList;
+  std::cout << "| TESTING ENQUEUE FUNCTION    | Adding 9 5 2 to Queue" << std::endl;
+  intQueueList.enqueue(9);
+  intQueueList.enqueue(5);
+  intQueueList.enqueue(2);
+  std::cout << "| TESTING PRINT FUNCTION      | Printing Queue: ";
+  //intQueueList.printQueue();
+  std::cout << std::endl;
+  std::cout << "| TESTING DEQUEUE FUNCTION    | Using dequeue once, printing value held: ";
+  int deholder2 = 0;
+  intQueueList.dequeue(deholder2);
+  std::cout << deholder2 << std::endl;
+  std::cout << "| TESTING ISEMPTY FUNCTION    | ";
+  bool intQueueListEmpty = intQueueList.isEmpty();
+  std::cout << "| TESTING SIZE FUNCTION       | Number of Elements in Queue: ";
+  int sizeOfintQueue = intQueueList.size();
+  std::cout << sizeOfintQueue << std::endl;
   /*
 
   SUQueueArr<int> beep;

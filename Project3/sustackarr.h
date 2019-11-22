@@ -1,5 +1,6 @@
 #ifndef SUSTACKARR_H
 #define SUSTACKARR_H
+#include "sulist.h"
 
 template <class DataType>
 class SUStackArr{
