@@ -3,13 +3,13 @@
 #include "sulist.h"
 
 template <class DataType>
-SUList<DataType>::SUList(){
+SUList<DataType>::SUList(){ // default constructor
   head = nullptr;
   tail = nullptr;
 }
 
 template <class DataType>
-SUList<DataType>::SUList(const SUList& obj){
+SUList<DataType>::SUList(const SUList& obj){ //Copy constructor
   std::cout << " Copy Constructor Called...";
   if (obj.head == nullptr){
     head = nullptr;
@@ -29,16 +29,47 @@ SUList<DataType>::SUList(const SUList& obj){
 }
 
 template <class DataType>
-SUList<DataType>& SUList<DataType>::operator=(const SUList<DataType>& obj){
-  SUList<DataType>temp(obj);
-  std::swap(temp.head, head);
-  return *this;
+SUList<DataType>& SUList<DataType>::operator=(const SUList<DataType>& obj){ // overloaded assignment operator
+  std::cout << "Overloaded Assignment Operator Called...";
+  int track = 0;
+  if (this == &obj){
+    std::cout << "ERROR: Self Assignment!" << std::endl;
+    ListNode* tempPtr = nullptr;
+    return *this;
+  }
+  else{
+    ListNode* cursor = this->head;
+    while (cursor){
+      ListNode* nextNode = cursor->next;
+      delete cursor;
+      cursor = nextNode;
+    }
+    cursor = obj.head;
+    while (cursor){
+      track++;
+      cursor = cursor -> next;
+    }
+    cursor = obj.head;
+    ListNode* tempPtr = obj.head;
+    this->head = nullptr;
+    this->tail = nullptr;
+    for (cursor = obj.head; cursor; cursor = cursor->next){
+      for (int i = 0; i < track - 1; i++){
+        tempPtr = tempPtr->next;
+      }
+      putFront(tempPtr->data);
+      tempPtr = obj.head;
+      track--;
+    } 
+    std::cout << "List Successfully Overwritten..." << std::endl;
+    return *this;
+  }
 }
 
 
 template <class DataType>
-SUList<DataType>::~SUList(){
-  if (head == nullptr){
+SUList<DataType>::~SUList(){ // Destructor
+  if (head != nullptr){
     ListNode *currentPtr = head;
     ListNode *tempPtr;
 
@@ -51,7 +82,7 @@ SUList<DataType>::~SUList(){
 }
 
 template <class DataType>
-DataType SUList<DataType>::getFront(){
+DataType SUList<DataType>::getFront(){ // removes front and returns it
   ListNode *tempPtr = head;
   DataType hold = head->data;
   head = head->next;
@@ -60,7 +91,7 @@ DataType SUList<DataType>::getFront(){
 }
 
 template <class DataType>
-DataType SUList<DataType>::getBack(){
+DataType SUList<DataType>::getBack(){ // removes back and returns it
   ListNode* tempPtr = tail;
   DataType hold = tail->data;
   if(head && tail){
@@ -77,30 +108,30 @@ DataType SUList<DataType>::getBack(){
 }
 
 template <class DataType>
-void SUList<DataType>::putFront(const DataType& obj){
+void SUList<DataType>::putFront(const DataType& obj){ // Adds to front of list
  ListNode* newNode = new ListNode;
-  newNode->data = obj;
-  newNode->next = nullptr;
-  newNode->prev = nullptr;
-  if(!head && !tail){
-    newNode->next = head;
-    head = newNode;
-    tail = newNode;
-  }else{
-    newNode->next = head;
-    head->prev = newNode;
-    head = newNode;
-  }
-  ListNode* cursor = head;
-  while(cursor->next){
-    cursor = cursor->next;
-  }
-  tail = cursor;
+ newNode->data = obj;
+ newNode->next = nullptr;
+ newNode->prev = nullptr;
+ if(!head && !tail){
+  newNode->next = head;
+  head = newNode;
+  tail = newNode;
+}else{
+  newNode->next = head;
+  head->prev = newNode;
+  head = newNode;
+}
+ListNode* cursor = head;
+while(cursor->next){
+  cursor = cursor->next;
+}
+tail = cursor;
 }
 
 template <class DataType>
-void SUList<DataType>::putBack(const DataType& obj){
-ListNode* newNode = new ListNode;
+void SUList<DataType>::putBack(const DataType& obj){ // Adds to back of list
+  ListNode* newNode = new ListNode;
   newNode->data = obj;
   newNode->next = nullptr;
   newNode->prev = nullptr;
@@ -116,7 +147,7 @@ ListNode* newNode = new ListNode;
 }
 
 template <class DataType>
-int SUList<DataType>::size() const{
+int SUList<DataType>::size() const{ // returns the size of the list
   int counter = 0;
   ListNode *currentPtr = head;
   while (currentPtr){
@@ -127,7 +158,7 @@ int SUList<DataType>::size() const{
 }
 
 template <class DataType>
-bool SUList<DataType>::contains(const DataType& obj){
+bool SUList<DataType>::contains(const DataType& obj){ // Tests for membership within list
   ListNode *tempPtr = head;
   while (tempPtr){
     if(tempPtr->data == obj){
@@ -143,11 +174,11 @@ bool SUList<DataType>::contains(const DataType& obj){
 }
 
 template <class DataType>
-void SUList<DataType>::print(){
+void SUList<DataType>::print() const{ // prints the contents of the list
   ListNode *currentPtr = head;
   while (currentPtr){
     std::cout << currentPtr->data << " ";
-    currentPtr = currentPtr -> next;
+    currentPtr = currentPtr->next;
   }
   std::cout << std::endl;
 }

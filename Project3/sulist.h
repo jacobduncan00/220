@@ -22,7 +22,7 @@ public:
   void putBack(const DataType&); // Add to the back
   int size() const;              // Returns the number of elements
   bool contains(const DataType&);// Tests for membership
-  void print();                  // For Testing purposes
+  void print() const;            // For Testing purposes
   SUList<DataType>& operator=(const SUList<DataType>&); // Overloaded assignment
 };
 
