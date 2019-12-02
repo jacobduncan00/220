@@ -1,6 +1,22 @@
-#ifndef SUQUEUEARR_H
-#define SUQUEUEARR_H
+#ifndef SUQUEUE_H
+#define SUQUEUE_H
 #include "sulist.h"
+
+template <class DataType>
+class SUQueueList{
+private:
+	SUList<DataType> list;
+public:
+  SUQueueList();                   // Constructor
+  SUQueueList(const SUQueueList &); // Copy Constructor
+  ~SUQueueList();                  // Destructor
+  int size() const;               // get the number of elements in the queue
+  bool isEmpty() const;           // Check if the queue is empty
+  void enqueue(const DataType&);  // Enqueues some data
+  void dequeue(DataType&);        // Get the front element and store it
+  void printQueue() const;        // Prints the queue from the front to the rear
+  //SUQueueList<DataType>& operator=(const SUQueueList<DataType>&); // Assignment operator
+};
 
 template <class DataType>
 class SUQueueArr{
@@ -21,6 +37,5 @@ public:
   SUQueueArr<DataType>& operator=(const SUQueueArr<DataType>&); // Assignment operator
 };
 
-#include "suqueuearr.cpp"
-
+#include "suqueue.cpp"
 #endif

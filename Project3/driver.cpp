@@ -1,9 +1,7 @@
 #include <iostream>
 #include "sulist.h"
-#include "sustacklist.h"
-#include "suqueuearr.h"            // implementing all header files that are linked to cpp's of their respected classes
-#include "sustackarr.h"
-#include "suqueuelist.h"
+#include "sustack.h"
+#include "suqueue.h"        // implementing all header files that are linked to cpp's of their respected classes
 #include "payroll.h"
 
 int main(){
@@ -20,6 +18,7 @@ int main(){
   SUQueueList<int> SUQueueList_Integer_Test;
   SUQueueList<PayRoll> SUQueueList_PayRoll_Test;
 
+  // PayRoll objects used for testing
   PayRoll Lexi("Lexi", 50, 20);
   PayRoll Ben("Ben", 19, 15);
   PayRoll Ryan("Ryan", 30, 10);
@@ -39,15 +38,10 @@ int main(){
   SUList_Integer_Test.putBack(3);
   std::cout << "| TESTING PRINT FUNCTION      | Printing List: ";
   SUList_Integer_Test.print();
-  //std::cout << "=============" << std::endl;
-  //SUList_Integer_Test.print();
   int i = SUList_Integer_Test.size();
-  //std::cout << std::endl;
   std::cout << "| TESTING SIZE FUNCTION       | Number of Elements in List: " << i << std::endl;
-  //std::cout << std::endl;
   std::cout << "| TESTING COPY CONSTRUCTOR    |";
   SUList<int> copyTest(SUList_Integer_Test);
-  //std::cout << "| TESTING PRINT FUNCTION     | Printing Copied List: ";
   //copyTest.print();
   int j = SUList_Integer_Test.getFront();
   std::cout << "| TESTING GET FRONT FUNCTION  | Front of List: " << j << std::endl;
@@ -64,8 +58,6 @@ int main(){
   bool flag = SUList_Integer_Test.contains(5);
   std::cout << std::endl;
 
-
-
   std::cout << "ＳＵＬｉｓｔ　ＰａｙＲｏｌｌ　ＴＥＳＴ" << std::endl;
   std::cout << std::endl;
   std::cout << "| TESTING PUT FRONT           | Inserting Lexi, followed by Ben in the front" << std::endl;
@@ -76,10 +68,7 @@ int main(){
   SUList_PayRoll_Test.putBack(Chris);
   std::cout << "| TESTING PRINT FUNCTION      | Printing List: " << std::endl;
   SUList_PayRoll_Test.print();
-  //std::cout << "=============" << std::endl;
-  //SUList_Integer_Test.print();
   int SUList_PayRoll_Holder = SUList_PayRoll_Test.size();
-  //std::cout << std::endl;
   std::cout << "| TESTING SIZE FUNCTION       | Number of Elements in List: " << SUList_PayRoll_Holder << std::endl;
   PayRoll a = SUList_PayRoll_Test.getFront();
   std::cout << "| TESTING GET FRONT FUNCTION  | Front of List: " << std::endl;
@@ -97,7 +86,6 @@ int main(){
   //SUList_Integer_Test.print();
   std::cout << "| TESTING CONTAINS FUNCTION   | Testing if Amanda is a member of the list: ";
   bool SUList_PayRoll_Flag = SUList_PayRoll_Test.contains(Amanda);
-
 
   std::cout << std::endl;
   std::cout << "ＳＵＳｔａｃｋＡｒｒ　ＴＥＳＴ" << std::endl;
@@ -117,7 +105,6 @@ int main(){
   std::cout << k << std::endl;
   std::cout << "| TESTING COPY CONSTRUCTOR    | ";
   SUStackArr<int> Copy_SUStack_Arr(SUStackArr_Integer_Test);  
-  //std::cout << std::endl;
   std::cout << "| TESTING ASSIGNMENT OPERATOR | Overwriting Stack: ";
   SUStackArr<int> Assignment_StackArr;
   Assignment_StackArr.push(2);
@@ -153,7 +140,6 @@ int main(){
   Assignment_StackArr_PayRoll.push(Chris);
   Assignment_StackArr_PayRoll.push(Ben);
   SUStackArr_PayRoll_Test = Assignment_StackArr_PayRoll;
-  //std::cout << "| TESTING PRINT FUNCTION      | Printing Stack: " << std::endl;
   //SUStackArr_PayRoll_Test.printStack();
   std::cout << std::endl;
   std::cout << "| TESTING ISEMPTY FUNCTION    | ";
@@ -275,9 +261,8 @@ int main(){
   assQueuePayRoll.enqueue(Chris);
   SUQueueArr_PayRoll_Test = assQueuePayRoll;
   //SUQueueArr_Integer_Test.printQueue();
-
-
   std::cout << std::endl;
+
   std::cout << "ＳＵＱｕｅｕｅＬｉｓｔ　ＴＥＳＴ" << std::endl;
   std::cout << std::endl;
   std::cout << "| TESTING ENQUEUE FUNCTION    | Adding 9 5 2 to Queue" << std::endl;
@@ -304,8 +289,8 @@ int main(){
   assList.enqueue(7);
   SUQueueList_Integer_Test = assList;
   //SUQueueList_Integer_Test.printQueue();
-
   std::cout << std::endl;
+  
   std::cout << "ＳＵＱｕｅｕｅＬｉｓｔ　ＰａｙＲｏｌｌ　ＴＥＳＴ" << std::endl;
   std::cout << std::endl;
   std::cout << "| TESTING ENQUEUE FUNCTION    | Adding Bob and Billy to Queue" << std::endl;
