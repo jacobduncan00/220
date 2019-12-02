@@ -91,6 +91,7 @@ DataType* SUStackArr<DataType>::copyArr(DataType* arr, int c, int t){ // copy ar
 	for(int i = 0; i <= t; i++){ // makes sure that it fills to the top
 		newArr[i] = arr[i]; // sets the contents of the new array to the same as the old, considering the changes
 	}
+	delete[] arr;
 	return newArr; // returns the new array
 }
 
