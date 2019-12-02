@@ -35,7 +35,7 @@ public:
   void pop(DataType&);            // Pop an object off the stack and store it
   void printStack() const;        // Prints the stack from the top, down
   SUStackArr<DataType>& operator=(const SUStackArr<DataType>&); // Assignment operator
-  DataType* copyArr(DataType*,int,int);
+  DataType* copyArr(DataType*,int,int); // function used to make a copy of the array
 };
 
 #include "sustack.cpp"

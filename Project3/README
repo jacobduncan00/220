@@ -1,0 +1,19 @@
+Project by Jacob Duncan - Worked Alone on this Project
+Computer Science 220
+
+Project 3
+
+PayRoll.cpp - used to implement PayRoll objects (Employees) as a DataType
+
+SUList.cpp - a doubly linked list that is templated. Data can be added or taken off the front or back of list. Used in SUQueueList and SUStackList
+
+SUQueue.cpp - Two templated classes are included the SUQueueArr and SUQueueList. Respectively these are Queues -> Array and Linked List backed with Queue functionality
+
+SUStack.cpp - Two templated classes are included the SUStackArr and SUStackList. Respectively these are Stacks -> Array and Linked List backed with Stack functionality
+
+Instructions:
+- Download Code
+- Open terminal and locate where you downloaded the files
+- Type "make" then "./run"
+- To clean the .o files use "make clean"
+- Enjoy the library :)
