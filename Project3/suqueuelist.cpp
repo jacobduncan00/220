@@ -7,7 +7,7 @@ SUQueueList<DataType>::SUQueueList(){ // default constructor -> already done by 
 
 template <class DataType>
 SUQueueList<DataType>::SUQueueList(const SUQueueList& obj){ 
-
+  *this = obj;
 }
 
 /*

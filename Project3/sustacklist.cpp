@@ -11,10 +11,12 @@ SUStackList<DataType>::SUStackList(const SUStackList& obj){ // copy constructor 
   std::cout << "Stack Copied Successfully!" << std::endl;
 }
 
+/*
 template <class DataType>
 SUStackList<DataType>& SUStackList<DataType>::operator=(const SUStackList<DataType>& obj){ // overloaded assignment operator -> done by SUList
  
 }
+*/
 
 template <class DataType>
 SUStackList<DataType>::~SUStackList(){ // destructor -> done by SUList

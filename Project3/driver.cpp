@@ -16,6 +16,7 @@ int main(){
   SUStackList<int> SUStackList_Integer_Test;
   SUStackList<PayRoll> SUStackList_PayRoll_Test;
   SUQueueArr<int> SUQueueArr_Integer_Test;
+  SUQueueArr<PayRoll> SUQueueArr_PayRoll_Test;
   SUQueueList<int> SUQueueList_Integer_Test;
   SUQueueList<PayRoll> SUQueueList_PayRoll_Test;
 
@@ -25,6 +26,8 @@ int main(){
   PayRoll Chris("Chris", 12, 13);
   PayRoll Amanda("Amanda", 12.50, 8);
   PayRoll Garret("Garret", 21, 17);
+  PayRoll Bob("Bob", 10, 15);
+  PayRoll Billy("Billy", 19, 12.50);
 
   std::cout << std::endl;
   std::cout << "ＳＵＬｉｓｔ　ＴＥＳＴ" << std::endl;
@@ -54,7 +57,7 @@ int main(){
   tester.putFront(7);
   tester.putFront(2);
   tester.putBack(5);
-  std::cout << "| TESTING ASSIGNMENT OPERATOR | Overwriting List:";
+  std::cout << "| TESTING ASSIGNMENT OPERATOR | Overwriting List: ";
   SUList_Integer_Test = tester;
   //SUList_Integer_Test.print();
   std::cout << "| TESTING CONTAINS FUNCTION   | Testing if 5 is a member of the list: ";
@@ -181,8 +184,7 @@ int main(){
   Assignment_StackList_Integer.push(97);
   Assignment_StackList_Integer.push(18);
   SUStackList_Integer_Test = Assignment_StackList_Integer;
-  SUStackList_Integer_Test.printStack();
-  std::cout << std::endl;
+  //SUStackList_Integer_Test.printStack();
   std::cout << std::endl;
 
   std::cout << "ＳＵＳｔａｃｋＬｉｓｔ　ＰａｙＲｏｌｌ　ＴＥＳＴ" << std::endl;
@@ -203,8 +205,13 @@ int main(){
   bool SUStackListEmpty_PayRoll = SUStackList_PayRoll_Test.isEmpty();
   std::cout << "| TESTING COPY CONSTRUCTOR    | ";
   SUStackList<PayRoll> SUStackList_PayRoll_Test_Copy(SUStackList_PayRoll_Test);
+  std::cout << "| TESTING ASSIGNMENT OPERATOR | Overwriting Stack: ";
+  SUStackList<PayRoll> Assignment_StackList_PayRoll;
+  Assignment_StackList_PayRoll.push(Bob);
+  Assignment_StackList_PayRoll.push(Billy);
+  SUStackList_PayRoll_Test = Assignment_StackList_PayRoll;
+  //SUStackList_PayRoll_Test.printStack();
   std::cout << std::endl;
-
 
   std::cout << "ＳＵＱｕｅｕｅＡｒｒ　ＴＥＳＴ" << std::endl;
   std::cout << std::endl;
@@ -236,6 +243,39 @@ int main(){
   assQueue.enqueue(9);
   SUQueueArr_Integer_Test = assQueue;
   //SUQueueArr_Integer_Test.printQueue();
+  std::cout << std::endl;
+
+  std::cout << "ＳＵＱｕｅｕｅＡｒｒ　ＰａｙＲｏｌｌ　ＴＥＳＴ" << std::endl;
+  std::cout << std::endl;
+  std::cout << "| TESTING ENQUEUE FUNCTION    | Adding Bob, Billy, and Amanda to Queue" << std::endl;
+  SUQueueArr_PayRoll_Test.enqueue(Bob);
+  SUQueueArr_PayRoll_Test.enqueue(Billy);
+  SUQueueArr_PayRoll_Test.enqueue(Amanda);
+  std::cout << "| TESTING PRINT FUNCTION      | Printing Queue: " << std::endl;
+  SUQueueArr_PayRoll_Test.printQueue();
+  std::cout << std::endl;
+  std::cout << "| TESTING DEQUEUE FUNCTION    | Using dequeue once, printing PayRoll Object held: " << std::endl;
+  PayRoll payRollDeholder (" ", 0, 0);
+  SUQueueArr_PayRoll_Test.dequeue(payRollDeholder);
+  std::cout << payRollDeholder << std::endl;
+  std::cout << "| TESTING PRINT FUNCTION      | Printing Queue: " << std::endl;
+  SUQueueArr_PayRoll_Test.printQueue();
+  std::cout << std::endl;
+  std::cout << "| TESTING ISEMPTY FUNCTION    | ";
+  bool payRollQueueisEmpty = SUQueueArr_PayRoll_Test.isEmpty();
+  std::cout << "| TESTING SIZE FUNCTION       | Number of PayRoll Objects (Employees) in Queue: ";
+  int sizeOfPayRollQueueArr = SUQueueArr_PayRoll_Test.size();
+  std::cout << sizeOfPayRollQueueArr << std::endl;
+  std::cout << "| TESTING COPY CONSTRUCTOR    | ";
+  SUQueueArr<PayRoll> Copy_SUQueueArr_PayRoll(SUQueueArr_PayRoll_Test); 
+  std::cout << "| TESTING ASSIGNMENT OPERATOR | Overwriting Stack: ";
+  SUQueueArr<PayRoll> assQueuePayRoll;
+  assQueuePayRoll.enqueue(Lexi);
+  assQueuePayRoll.enqueue(Ryan);
+  assQueuePayRoll.enqueue(Chris);
+  SUQueueArr_PayRoll_Test = assQueuePayRoll;
+  //SUQueueArr_Integer_Test.printQueue();
+
 
   std::cout << std::endl;
   std::cout << "ＳＵＱｕｅｕｅＬｉｓｔ　ＴＥＳＴ" << std::endl;
@@ -257,24 +297,20 @@ int main(){
   std::cout << sizeOfintQueue << std::endl;
   std::cout << "| TESTING COPY CONSTRUCTOR    | ";
   SUQueueList<int> Copy_SUQueueList(SUQueueList_Integer_Test);
-  std::cout << std::endl;
   std::cout << "| TESTING ASSIGNMENT OPERATOR | Overwriting Queue: ";
   SUQueueList<int> assList;
   assList.enqueue(9);
   assList.enqueue(8);
   assList.enqueue(7);
   SUQueueList_Integer_Test = assList;
-  SUQueueList_Integer_Test.printQueue();
-
+  //SUQueueList_Integer_Test.printQueue();
 
   std::cout << std::endl;
   std::cout << "ＳＵＱｕｅｕｅＬｉｓｔ　ＰａｙＲｏｌｌ　ＴＥＳＴ" << std::endl;
   std::cout << std::endl;
   std::cout << "| TESTING ENQUEUE FUNCTION    | Adding Bob and Billy to Queue" << std::endl;
-  PayRoll bob("Bob", 10, 15);
-  PayRoll billy("Billy", 19, 12.50);
-  SUQueueList_PayRoll_Test.enqueue(bob);
-  SUQueueList_PayRoll_Test.enqueue(billy);
+  SUQueueList_PayRoll_Test.enqueue(Bob);
+  SUQueueList_PayRoll_Test.enqueue(Billy);
   std::cout << "| TESTING PRINT FUNCTION      | Printing Queue: " << std::endl;
   SUQueueList_PayRoll_Test.printQueue();
   PayRoll payRollHolder(" ", 0, 0);
@@ -284,8 +320,15 @@ int main(){
   std::cout << "| TESTING ISEMPTY FUNCTION    | ";
   bool payRollQueueEmpty = SUQueueList_PayRoll_Test.isEmpty();
   std::cout << "| TESTING SIZE FUNCTION       | Number of PayRoll Objects (Employees) in Queue: ";
-  int sizeOfpayRollQueue = SUQueueList_PayRoll_Test.size();
-  std::cout << sizeOfpayRollQueue << std::endl;
-  
+  int sizeOfPayRollQueue = SUQueueList_PayRoll_Test.size();
+  std::cout << sizeOfPayRollQueue << std::endl;
+  std::cout << "| TESTING COPY CONSTRUCTOR    | ";
+  SUQueueList<PayRoll> Copy_SUQueueList_PayRoll(SUQueueList_PayRoll_Test);
+  std::cout << "| TESTING ASSIGNMENT OPERATOR | Overwriting Queue: ";
+  SUQueueList<PayRoll> assPayRollQueue;
+  assPayRollQueue.enqueue(Lexi);
+  assPayRollQueue.enqueue(Ryan);
+  SUQueueList_PayRoll_Test = assPayRollQueue;
+  //SUQueueList_PayRoll_Test.printQueue();
   return 0;
 }
